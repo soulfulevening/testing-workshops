@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\Debug\Debug;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
 
 // If you don't want to setup permissions the proper way, just uncomment the following PHP line
@@ -15,11 +16,14 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
     || PHP_SAPI === 'cli-server'
 ) {
     header('HTTP/1.0 403 Forbidden');
-    exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
+    exit('You are not allowed to access this file. Check ' . basename(__FILE__) . ' for more information.');
 }
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 Debug::enable();
+
+$dotenv = new Dotenv();
+$dotenv->load(dirname(__DIR__) . '/.env', dirname(__DIR__) . '/.env.local');
 
 $kernel = new AppKernel('dev', true);
 if (PHP_VERSION_ID < 70000) {

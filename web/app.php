@@ -1,11 +1,15 @@
 <?php
 
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
 
 require __DIR__.'/../vendor/autoload.php';
 if (PHP_VERSION_ID < 70000) {
     include_once __DIR__.'/../var/bootstrap.php.cache';
 }
+
+$dotenv = new Dotenv();
+$dotenv->load(dirname(__DIR__) . '/.env', dirname(__DIR__) . '/.env.local');
 
 $kernel = new AppKernel('prod', false);
 if (PHP_VERSION_ID < 70000) {
