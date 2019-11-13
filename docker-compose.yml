@@ -27,3 +27,12 @@ services:
       - ./.env.local
     volumes:
       - ./docker/db/lib:/var/lib/mysql:rw
+  node:
+    image: node:latest
+    volumes:
+      - ./:/app:cached
+    entrypoint:
+      - /bin/sleep
+    command:
+      - infinity
+    working_dir: /app

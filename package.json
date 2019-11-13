@@ -1,0 +1,7 @@
+{
+  "name": "testing-workshops",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tenasterisks/testing-workshops.git",
+  "license": "MIT"
+}
