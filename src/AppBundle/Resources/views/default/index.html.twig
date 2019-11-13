@@ -1,8 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input type="submit" name="Subscribe">
-    {{ form_end(form) }}
+    <div class="row counter-block">
+        <div class="col-md-12 text-center">
+            <span id="subscription-counter" class="counter">0</span>
+            <p class="font-weight-bold">
+                Is already subscribed!
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="text-center">
+                Don't miss your chance and subscribe right now!
+            </p>
+            {{ form_start(form) }}
+            <div class="input-group mb-2 mr-sm-2">
+                {{ form_widget(form.email) }}
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success mb-2 appended-btn">Subscribe</button>
+                </div>
+                <div class="invalid-feedback">{{ form_errors(form.email) }}</div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

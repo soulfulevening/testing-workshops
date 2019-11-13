@@ -11,6 +11,6 @@ class SubscriptionType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('email', EmailType::class);
+        $builder->add('email', EmailType::class, ['attr' => ['placeholder' => 'Email'], 'label' => 'Dont miss your chance! Subscribe right now!']);
     }
 }

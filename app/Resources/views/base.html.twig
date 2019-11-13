@@ -6,18 +6,26 @@
     <link rel="apple-touch-icon image_src" href="{{ asset('apple-touch-icon.png') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Welcome to Subscribezilla!{% endblock %}</title>
-    <link rel="stylesheet" href="{{asset('assets/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/main.css')}}">
     {% block stylesheets %}{% endblock %}
 </head>
-<body>
+<body class="d-flex flex-column">
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
         <img src="{{ asset('logo.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="S"> ubscribezilla
     </a>
 </nav>
-<div class="container">
-    {% block body %}{% endblock %}
+<div id="page-content">
+    <div  class="container">
+        {% block body %}{% endblock %}
+    </div>
 </div>
+<footer id="sticky-footer" class="py-4 bg-light text-dark-50">
+    <div class="container text-center">
+        <small>2019 Copyright &copy; Ten Asterisks</small>
+    </div>
+</footer>
 {% block javascripts %}{% endblock %}
 </body>
 </html>
