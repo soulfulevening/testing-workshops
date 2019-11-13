@@ -23,7 +23,7 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $formData = $form->getData();
+            $subscription = $form->getData();
         }
 
         return $this->render('@App/default/index.html.twig', [
