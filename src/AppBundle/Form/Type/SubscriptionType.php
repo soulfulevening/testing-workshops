@@ -8,10 +8,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class SubscriptionType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('email', EmailType::class)
-        ;
+        $builder->add('email', EmailType::class);
     }
 }

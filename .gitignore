@@ -18,3 +18,4 @@
 /.idea
 /.env.local
 /docker/db/lib
+/web/assets
