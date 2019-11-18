@@ -3,23 +3,42 @@
 namespace AppBundle\Entity;
 
 use DateTime;
+use Doctrine\ORM\Mapping as ORM;
 use Exception;
 
+/**
+ * Class Subscription
+ *
+ * @package AppBundle\Entity
+ *
+ * @ORM\Entity()
+ */
 class Subscription
 {
 
     /**
+     * @var integer
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
+     * @ORM\Column(type="string", unique=true)
      */
     private $email;
 
     /**
      * @var DateTime
+     * @ORM\Column(type="datetime")
      */
     private $date;
 
     /**
      * @var boolean
+     * @ORM\Column(type="boolean")
      */
     private $isActive = true;
 
@@ -31,6 +50,14 @@ class Subscription
     public function __construct()
     {
         $this->date = new DateTime();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     /**

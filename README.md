@@ -23,3 +23,12 @@ docker-compose up -d
 ```
 
 And go to check your app [http://localhost](http://localhost)
+
+Database
+--------
+
+There is no migrations used, so just execute 
+
+```bash
+php bin/console doctrine:schema:create
+```

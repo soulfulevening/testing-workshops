@@ -29,7 +29,4 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
-    #     arguments:
-    #         $someArgument: 'some_value'
+    Doctrine\ORM\EntityManager: "@doctrine.orm.default_entity_manager"
