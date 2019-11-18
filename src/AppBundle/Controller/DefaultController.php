@@ -41,7 +41,11 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->subscriptionManager->save($form->getData());
+            $subscription = $this->subscriptionManager->save($form->getData());
+
+            return $this->render('@App/default/congratulations.twig', [
+                'subscription' => $subscription,
+            ]);
         }
 
         return $this->render('@App/default/index.html.twig', [

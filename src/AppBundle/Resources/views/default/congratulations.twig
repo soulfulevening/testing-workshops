@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-12">&nbsp;</div>
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <h1 class="display-4">Congratulations!</h1>
+            <p class="lead">You've just subscribed for the most interesting mailing in the world.</p>
+            <hr class="my-4">
+            <p>We  promise you, to send awesome information to the email <b>{{ subscription.email }}</b></p>
+            <p class="lead">
+                <a class="btn btn-success btn-lg" href="{{ path('homepage') }}" role="button">Back</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
