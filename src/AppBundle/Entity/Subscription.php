@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Class Subscription
@@ -12,6 +13,7 @@ use Exception;
  * @package AppBundle\Entity
  *
  * @ORM\Entity()
+ * @UniqueEntity("email", message="This email is already subscribed!")
  */
 class Subscription
 {
