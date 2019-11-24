@@ -22,6 +22,18 @@ Then just execute
 docker-compose up -d
 ```
 
+Install dependencies
+
+```bash
+docker-compose exec fpm composer install
+```
+
+Install assets
+
+```bash
+docker-compose exec node yarn install --force
+```
+
 And go to check your app [http://localhost](http://localhost)
 
 Database
@@ -30,5 +42,5 @@ Database
 There is no migrations used, so just execute 
 
 ```bash
-php bin/console doctrine:schema:create
+docker-compose exec fpm php bin/console doctrine:schema:create
 ```
