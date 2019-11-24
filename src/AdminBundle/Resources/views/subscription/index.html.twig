@@ -1,0 +1,34 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block body %}
+    <h1>Subscriptions list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Isactive</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subscription in subscriptions %}
+            <tr>
+                <td>{{ subscription.id }}</td>
+                <td>{{ subscription.email }}</td>
+                <td>{% if subscription.date %}{{ subscription.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if subscription.isActive %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('subscription_edit', { 'id': subscription.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
