@@ -29,6 +29,9 @@ framework:
     assets: ~
     php_errors:
         log: true
+    translator: ~
+    templating:
+        engines: ['twig']
 
 # Twig Configuration
 twig:
@@ -69,3 +72,11 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AdminBundle\Entity\User
+    from_email:
+        address: '%env(MAILER_USER)%'
+        sender_name: '%env(MAILER_USER)%'

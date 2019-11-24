@@ -44,3 +44,12 @@ There is no migrations used, so just execute
 ```bash
 docker-compose exec fpm php bin/console doctrine:schema:create
 ```
+
+Admin Panel
+----------
+
+Create admin user
+
+```bash
+docker-compose exec fpm php bin/console fos:user:create admin --super-admin
+```
