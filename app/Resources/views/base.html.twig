@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Welcome to Subscribezilla!{% endblock %}</title>
     <link rel="stylesheet" href="{{asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/main.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     {% block stylesheets %}{% endblock %}
 </head>
 <body class="d-flex flex-column">
@@ -26,6 +26,8 @@
         <small>2019 Copyright &copy; Ten Asterisks</small>
     </div>
 </footer>
+<script type="text/javascript" src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}"></script>
 {% block javascripts %}{% endblock %}
+<script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 </html>

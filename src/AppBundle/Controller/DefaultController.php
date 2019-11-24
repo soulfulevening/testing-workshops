@@ -2,8 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Subscription;
 use AppBundle\Form\Type\SubscriptionType;
 use AppBundle\Manager\SubscriptionManager;
+use AppBundle\Repository\SubscriptionRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,13 +24,20 @@ class DefaultController extends Controller
     private $subscriptionManager;
 
     /**
+     * @var SubscriptionRepository
+     */
+    private $subscriptionRepository;
+
+    /**
      * DefaultController constructor.
      *
      * @param SubscriptionManager $subscriptionManager
+     * @param EntityManager $entityManager
      */
-    public function __construct(SubscriptionManager $subscriptionManager)
+    public function __construct(SubscriptionManager $subscriptionManager, EntityManager $entityManager)
     {
         $this->subscriptionManager = $subscriptionManager;
+        $this->subscriptionRepository = $entityManager->getRepository(Subscription::class);
     }
 
     /**
@@ -34,6 +46,8 @@ class DefaultController extends Controller
      *
      * @return Response
      * @throws OptimisticLockException
+     * @throws NoResultException
+     * @throws NonUniqueResultException
      */
     public function indexAction(Request $request)
     {
@@ -50,6 +64,7 @@ class DefaultController extends Controller
 
         return $this->render('@App/default/index.html.twig', [
             'form' => $form->createView(),
+            'counter' => $this->subscriptionRepository->getCountOfActive(),
         ]);
     }
 }
