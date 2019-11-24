@@ -48,7 +48,7 @@ class DefaultController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('subscription_edit', array('id' => $subscription->getId()));
+            return $this->redirectToRoute('subscription_index', array('id' => $subscription->getId()));
         }
 
         return $this->render('@Admin/subscription/edit.html.twig', array(

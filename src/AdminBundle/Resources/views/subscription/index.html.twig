@@ -1,34 +1,40 @@
 {% extends '@Admin/base.html.twig' %}
 
 {% block body %}
-    <h1>Subscriptions list</h1>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Subscriptions list</h1>
 
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Email</th>
-            <th>Date</th>
-            <th>Isactive</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for subscription in subscriptions %}
+        <table class="table table-hover">
+            <thead>
             <tr>
-                <td>{{ subscription.id }}</td>
-                <td>{{ subscription.email }}</td>
-                <td>{% if subscription.date %}{{ subscription.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if subscription.isActive %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('subscription_edit', { 'id': subscription.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date</th>
+                <th scope="col">Active</th>
+                <th scope="col">Actions</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for subscription in subscriptions %}
+                <tr>
+                    <th scope="row">{{ subscription.id }}</th>
+                    <td>{{ subscription.email }}</td>
+                    <td>{% if subscription.date %}{{ subscription.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if subscription.isActive %}Yes{% else %}No{% endif %}</td>
+                    <td>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="{{ path('subscription_edit', { 'id': subscription.id }) }}">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
