@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="apple-touch-icon image_src" href="{{ asset('apple-touch-icon.png') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Subscribezilla Admin Panel{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="d-flex flex-column">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary text-light">
+    <a class="navbar-brand" href="{{ path('admin-panel') }}">
+        <img src="{{ asset('logo.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="S"> <span class="text-light">ubscribezilla Admin Panel</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link">{{ app.user.username }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i></a>
+                </li>
+            </ul>
+
+        {% endif %}
+    </div>
+</nav>
+<div id="page-content">
+    <div  class="container">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+<footer id="sticky-footer" class="py-4 bg-light text-dark-50">
+    <div class="container text-center">
+        <small>2019 Copyright &copy; Ten Asterisks</small>
+    </div>
+</footer>
+<script type="text/javascript" src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>
